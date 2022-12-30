@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import theme from './core/theme';
+import { theme } from "./core/theme";
 import { Root } from "./views";
 
 import reportWebVitals from "./reportWebVitals";
@@ -13,8 +13,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-        <Root />
-    <ThemeProvider />
+      <Root />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
