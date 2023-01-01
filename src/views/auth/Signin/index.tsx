@@ -14,10 +14,16 @@ import Container from "@mui/material/Container";
 // import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import { Copyright } from "../../../shared/components";
+import { useFormData } from "../../../shared/hooks/index";
 
 // const theme = createTheme();
 
 export function AuthSignIn() {
+  const [formData, , setFormData] = useFormData({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -80,12 +86,12 @@ export function AuthSignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="/forgot" variant="body2">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

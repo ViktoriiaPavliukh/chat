@@ -2,7 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { theme } from "./core/theme";
+import { RouterProvider } from "react-router-dom";
+
 import { Root } from "./views";
+import { router } from "./core/router";
 
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "@mui/material";
@@ -13,7 +16,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Root />
+      <RouterProvider router={router} />
     </ThemeProvider>
   </React.StrictMode>
 );
