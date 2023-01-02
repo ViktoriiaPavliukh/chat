@@ -1,20 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider as ReduxProvider } from "react-redux";
+import { ThemeProvider } from "@mui/material";
+// import { RouterProvider } from "react-router-dom";
+// import "normalize.css";
 
+import store from "./core/store";
 import { theme } from "./core/theme";
 import { Root } from "./views";
 
 import reportWebVitals from "./reportWebVitals";
-import { ThemeProvider } from "@mui/material";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Root />
-    </ThemeProvider>
+    <ReduxProvider store={store}>
+      <ThemeProvider theme={theme}>
+        <Root />
+      </ThemeProvider>
+    </ReduxProvider>
   </React.StrictMode>
 );
 
