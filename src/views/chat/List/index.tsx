@@ -8,47 +8,39 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 
-export default function ChatList() {
+export function ChatList() {
   return (
     <div>
-      // Chat List //{" "}
       <ul>
-        //{" "}
+        {" "}
         <li>
-          // <Link href="/123">To Room</Link>
-          //{" "}
-        </li>
-        //{" "}
+          <Link href="/123">To Room</Link>{" "}
+        </li>{" "}
         <li>
-          // <Link href="/signin">To SignIn</Link>
-          //{" "}
-        </li>
-        //{" "}
+          <Link href="/signin">To SignIn</Link>{" "}
+        </li>{" "}
         <li>
-          // <Link href="/signup">To SignUp</Link>
-          //{" "}
-        </li>
-        //{" "}
+          <Link href="/signup">To SignUp</Link>{" "}
+        </li>{" "}
       </ul>
-      //
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            <Avatar alt="Remy Sharp" src="" />
           </ListItemAvatar>
           <ListItemText
-            primary="Brunch this weekend?"
+            primary="Group name"
             secondary={
               <React.Fragment>
                 <Typography
-                  sx={{ display: "inline" }}
-                  component="span"
+                  sx={{ display: "block" }}
+                  component="h3"
                   variant="body2"
                   color="text.primary"
                 >
                   Ali Connors
                 </Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
+                {"I'll be in your neighborhood doing errands this…"}
               </React.Fragment>
             }
           />
@@ -63,14 +55,14 @@ export default function ChatList() {
             secondary={
               <React.Fragment>
                 <Typography
-                  sx={{ display: "inline" }}
-                  component="span"
+                  sx={{ display: "block" }}
+                  component="h3"
                   variant="body2"
                   color="text.primary"
                 >
-                  to Scott, Alex, Jennifer
+                  Jennifer
                 </Typography>
-                {" — Wish I could come, but I'm out of town this…"}
+                {"Wish I could come, but I'm out of town this…"}
               </React.Fragment>
             }
           />
@@ -81,18 +73,16 @@ export default function ChatList() {
             <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
           </ListItemAvatar>
           <ListItemText
-            primary="Oui Oui"
+            primary="+380934902222"
             secondary={
               <React.Fragment>
                 <Typography
-                  sx={{ display: "inline" }}
-                  component="span"
+                  sx={{ display: "block" }}
+                  component="h3"
                   variant="body2"
                   color="text.primary"
-                >
-                  Sandra Adams
-                </Typography>
-                {" — Do you have Paris recommendations? Have you ever…"}
+                ></Typography>
+                {"Do you have Paris recommendations? Have you ever…"}
               </React.Fragment>
             }
           />
