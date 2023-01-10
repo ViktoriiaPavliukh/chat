@@ -6,9 +6,9 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { Link } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
+import { ChatRoom } from "../../chat/index";
 import { ChatList } from "../../chat/index";
 import { FormInput } from "../../../shared/components/FormInput";
-import { BoxSend, BoxReceive } from "../../../shared/components/index";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -26,8 +26,7 @@ export function Main() {
           <ChatList />
         </Grid>
         <Grid xs={8}>
-          <BoxSend />
-          <BoxReceive />
+          <ChatRoom />
         </Grid>
         <Grid xs={4}>
           <div>
