@@ -1,6 +1,8 @@
-import * as React from "react";
+import React from "react";
 
-import { createTheme } from "@mui/material";
+import { createTheme, LinkProps } from "@mui/material";
+
+// import { NavigateLink } from "./override/index";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -33,4 +35,16 @@ export const theme = createTheme({
     },
     fontFamily: "Andika",
   },
+  // components: {
+  //   MuiLink: {
+  //     defaultProps: {
+  //       component: NavigateLink,
+  //     } as LinkProps,
+  //   },
+  //   MuiButtonBase: {
+  //     defaultProps: {
+  //       LinkComponent: NavigateLink,
+  //     },
+  //   },
+  // },
 });

@@ -7,7 +7,10 @@ import { ThemeProvider } from "@mui/material";
 
 import store from "./core/store";
 import { theme } from "./core/theme";
+// import { RouterProvider } from "react-router-dom";
+
 import { Root } from "./views";
+// import { router } from "./core/router";
 
 import reportWebVitals from "./reportWebVitals";
 
