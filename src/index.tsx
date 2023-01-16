@@ -2,15 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider as ReduxProvider } from "react-redux";
 import { ThemeProvider } from "@mui/material";
-// import { RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 // import "normalize.css";
 
 import store from "./core/store";
 import { theme } from "./core/theme";
-// import { RouterProvider } from "react-router-dom";
 
 import { Root } from "./views";
-// import { router } from "./core/router";
 
 import reportWebVitals from "./reportWebVitals";
 

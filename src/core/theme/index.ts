@@ -2,7 +2,7 @@ import React from "react";
 
 import { createTheme, LinkProps } from "@mui/material";
 
-// import { NavigateLink } from "./override/index";
+import { NavigateLink } from "./override/index";
 
 declare module "@mui/material/styles" {
   interface Theme {
