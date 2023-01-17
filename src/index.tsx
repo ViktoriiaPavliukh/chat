@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router-dom";
 // import "normalize.css";
 
 import store from "./core/store";
+import { router } from "./core/router";
 import { theme } from "./core/theme";
 
 import { Root } from "./views";
@@ -20,6 +21,7 @@ root.render(
     <ReduxProvider store={store}>
       <ThemeProvider theme={theme}>
         <Root />
+        {/* <RouterProvider router={router} /> */}
       </ThemeProvider>
     </ReduxProvider>
   </React.StrictMode>

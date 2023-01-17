@@ -8,7 +8,7 @@ import { UserProfile } from "../views/user";
 const createRouter =
   process.env.ENV === "gh-pages" ? createHashRouter : createBrowserRouter;
 
-export default createRouter([
+export const router = createRouter([
   {
     path: "/",
     element: <Root />,
