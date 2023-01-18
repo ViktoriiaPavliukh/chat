@@ -1,3 +1,5 @@
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { createBrowserRouter, createHashRouter } from "react-router-dom";
 
 import { Root } from "../views/Root";

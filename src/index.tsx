@@ -20,8 +20,8 @@ root.render(
   <React.StrictMode>
     <ReduxProvider store={store}>
       <ThemeProvider theme={theme}>
-        <Root />
-        {/* <RouterProvider router={router} /> */}
+        {/* <Root /> */}
+        <RouterProvider router={router} />
       </ThemeProvider>
     </ReduxProvider>
   </React.StrictMode>
