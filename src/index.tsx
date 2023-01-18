@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Provider as ReduxProvider } from "react-redux";
 import { ThemeProvider } from "@mui/material";
 import { RouterProvider } from "react-router-dom";
-// import "normalize.css";
+import "normalize.css";
 
 import store from "./core/store";
 import { router } from "./core/router";

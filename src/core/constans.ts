@@ -1,5 +1,5 @@
-export const YOUR_SITE_NAME = "YOUR_SITE_NAME";
-export const YOUR_SITE_DOMAIN = "YOUR_SITE_DOMAIN";
+export const YOUR_SITE_NAME = "ImailU";
+export const YOUR_SITE_DOMAIN = "ImailU";
 
 // REST Api Services
 // # https://mockapi.io/
