@@ -1,7 +1,14 @@
-import { createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from "redux";
 
-import rootReducer from './rootReducer';
+import rootReducer from "./rootReducer";
 
-export default createStore(rootReducer);
+import messagesMiddleware from "./messages/middleware";
 
-export type { IState } from './rootReducer';
+const middlewares = [messagesMiddleware];
+
+export default createStore(
+  rootReducer,
+  compose(applyMiddleware(...middlewares))
+);
+
+export type { IState } from "./rootReducer";

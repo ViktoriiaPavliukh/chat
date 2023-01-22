@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import featureReducer from "./__feature/reducer";
+import messagesReducer from "./messages/reducer";
 
 const rootReducer = combineReducers({
-  feature: featureReducer,
+  messages: messagesReducer,
 });
 
 export default rootReducer;
