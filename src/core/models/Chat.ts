@@ -1,5 +1,5 @@
 import { ID } from "./_ID";
-// import { Message } from './Message';
+import { Message } from "./Message";
 
 export type ChatID = ID<Chat>;
 
