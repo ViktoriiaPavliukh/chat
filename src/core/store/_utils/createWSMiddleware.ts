@@ -14,7 +14,7 @@ export function createWSMiddleware({
         disconnect();
       }
 
-      socket = io(connectionUrl, { withCredentials: true });
+      socket = io(connectionUrl);
     }
 
     function disconnect() {

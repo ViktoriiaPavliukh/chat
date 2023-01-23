@@ -1,4 +1,3 @@
-export * from "./_ID";
-export * from "./Chat";
-export * from "./Message";
-export * from "./UserID";
+export * from "./ChatModel";
+export * from "./MessageModel";
+export * from "./UserModel";
