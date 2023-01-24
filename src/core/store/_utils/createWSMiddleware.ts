@@ -18,7 +18,9 @@ export function createWSMiddleware({
     }
 
     function disconnect() {
-      socket?.disconnect();
+      if (socket) {
+        socket.disconnect();
+      }
       socket = null;
     }
 
@@ -27,13 +29,15 @@ export function createWSMiddleware({
         return;
       }
 
-      Object.entries(handlers).map(([handlerName, handler]) => {
-        socket?.on(handlerName, (data) => handler(store.dispatch, data));
-      });
+      // Object.entries(handlers).map(([handlerName, handler]) => {
+      //   socket.on(handlerName, (data) => handler(store.dispatch, data));
+      // });
     }
 
     function sendMessage(eventType: string, eventData: any) {
-      socket?.send(eventType, eventData);
+      if (socket) {
+        socket.send(eventType, eventData);
+      }
     }
 
     return (next) => (action) => {
