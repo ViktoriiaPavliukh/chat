@@ -7,7 +7,6 @@ import { Link } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 import { ChatRoom } from "../../chat/index";
-import { ChatList } from "../../chat/index";
 import { FormInput } from "../../../shared/components/FormInput";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -22,9 +21,7 @@ export function Main() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        <Grid xs={4}>
-          <ChatList />
-        </Grid>
+        <Grid xs={4}>ChatList</Grid>
         <Grid xs={8}>
           <ChatRoom />
         </Grid>

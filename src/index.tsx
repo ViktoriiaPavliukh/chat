@@ -9,8 +9,6 @@ import store from "./core/store";
 import { router } from "./core/router";
 import { theme } from "./core/theme";
 
-import { Root } from "./views";
-
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(

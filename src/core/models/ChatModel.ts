@@ -1,3 +1,4 @@
+import * as React from "react";
 import { BaseModel } from "./_BaseModel";
 import { MessageModel } from "./MessageModel";
 
