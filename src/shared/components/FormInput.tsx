@@ -64,26 +64,19 @@ const Input = styled(InputUnstyled)(
 `
 );
 
-// const OkMark = styled("span")`
-//   margin-left: 8px;
-//   margin-top: 10px;
-//   position: absolute;
-//   color: rgba(125, 200, 0, 1);
-// `;
-
 export function FormInput() {
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       <FormControlUnstyled defaultValue="" required>
         {({ filled, focused }: FormControlUnstyledState) => (
           <React.Fragment>
-            <UploadButton />
+            {/* <UploadButton /> */}
             <Input
               placeholder="Write a message..."
               className={filled ? "filled" : ""}
             />
             {filled && !focused}
-            <SendButton />
+            {/* <SendButton /> */}
           </React.Fragment>
         )}
       </FormControlUnstyled>

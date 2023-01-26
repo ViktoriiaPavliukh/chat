@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "@mui/material/Container";
 import { Header } from "./components/Header";
-import { Main } from "./components/Main";
+import { MainChat } from "./components/Main";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import { Outlet } from "react-router-dom";
@@ -13,7 +13,7 @@ export function Root() {
       <Container maxWidth="lg" disableGutters>
         <Box sx={{ height: "100vh" }}>
           <Header />
-          <Main />
+          <MainChat />
         </Box>
         <Outlet />
       </Container>

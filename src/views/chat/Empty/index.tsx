@@ -9,9 +9,9 @@ const ShadowContainer = styled(Paper)(({ theme }) => ({
 export function ChatEmpty() {
   return (
     <ShadowContainer>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam fugiat
+      {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam fugiat
       necessitatibus porro vitae voluptate? Animi cupiditate eius labore tenetur
-      ut. Esse id itaque maxime obcaecati porro saepe totam! Eius, facere.
+      ut. Esse id itaque maxime obcaecati porro saepe totam! Eius, facere. */}
     </ShadowContainer>
   );
 }
