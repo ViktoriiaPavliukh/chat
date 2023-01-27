@@ -8,7 +8,6 @@ import Stack from "@mui/material/Stack";
 
 import { ChatRoom } from "../../chat/index";
 import { ChatMain } from "../../chat/index";
-import { FormInput } from "../../../shared/components/FormInput";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -22,7 +21,9 @@ export function MainChat() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        <Grid xs={4}>{/* <ChatMain /> */}</Grid>
+        <Grid xs={4}>
+          <ChatMain />
+        </Grid>
         <Grid xs={8}>
           <ChatRoom />
         </Grid>

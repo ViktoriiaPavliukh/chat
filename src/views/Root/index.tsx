@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "@mui/material/Container";
 import { Header } from "./components/Header";
-import { MainChat } from "./components/Main";
+import { MainChat } from "../Root/components/Main";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import { Outlet } from "react-router-dom";

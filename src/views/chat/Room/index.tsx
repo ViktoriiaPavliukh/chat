@@ -14,7 +14,7 @@ import { MessageModel } from "../../../core/models";
 import { FormInput } from "../../../shared/components/FormInput";
 import { UploadButton, SendButton } from "../../../shared/components";
 
-function Room({ messages, send }: IProps) {
+export function ChatRoom({ messages, send }: IProps) {
   const [text, setText] = useState("");
   const { roomId } = useParams();
 
@@ -24,10 +24,6 @@ function Room({ messages, send }: IProps) {
       setText("");
     }
   };
-
-  // const handleClear = () => {
-  //   setText("");
-  // };
 
   return (
     <div>
@@ -46,11 +42,6 @@ function Room({ messages, send }: IProps) {
       <Stack direction="row" spacing={2}>
         {" "}
         <UploadButton />
-        {/* <input
-          value={text}
-          placeholder="Write a message..."
-          onChange={(e) => setText(e.target.value)}
-        /> */}
         <FormInput value={text} onChange={(e) => setText(e.target.value)} />
         <SendButton onClick={sendHandler} />
       </Stack>
@@ -76,7 +67,7 @@ const mapDispatch = (d: any) => ({
     }),
 });
 
-export default connect(mapState, mapDispatch)(Room);
+export default connect(mapState, mapDispatch)(ChatRoom);
 
 interface IProps {
   messages: MessageModel[];

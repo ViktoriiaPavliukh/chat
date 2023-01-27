@@ -29,9 +29,9 @@ export function createWSMiddleware({
         return;
       }
 
-      // Object.entries(handlers).map(([handlerName, handler]) => {
-      //   socket.on(handlerName, (data) => handler(store.dispatch, data));
-      // });
+      Object.entries(handlers).map(([handlerName, handler]) => {
+        socket.on(handlerName, (data) => handler(store.dispatch, data));
+      });
     }
 
     function sendMessage(eventType: string, eventData: any) {
