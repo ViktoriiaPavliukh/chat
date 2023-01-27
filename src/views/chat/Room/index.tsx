@@ -25,6 +25,10 @@ function Room({ messages, send }: IProps) {
     }
   };
 
+  // const handleClear = () => {
+  //   setText("");
+  // };
+
   return (
     <div>
       <div>
@@ -42,14 +46,13 @@ function Room({ messages, send }: IProps) {
       <Stack direction="row" spacing={2}>
         {" "}
         <UploadButton />
-        <input
+        {/* <input
           value={text}
           placeholder="Write a message..."
           onChange={(e) => setText(e.target.value)}
-        />
-        <div onClick={sendHandler}>
-          <SendButton />
-        </div>
+        /> */}
+        <FormInput value={text} onChange={(e) => setText(e.target.value)} />
+        <SendButton onClick={sendHandler} />
       </Stack>
     </div>
   );

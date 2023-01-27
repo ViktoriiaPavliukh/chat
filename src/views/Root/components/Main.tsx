@@ -35,9 +35,7 @@ export function MainChat() {
             </Stack>
           </div>
         </Grid>
-        <Grid xs={8}>
-          <FormInput />
-        </Grid>
+        <Grid xs={8}>{/* <FormInput /> */}</Grid>
       </Grid>
     </Box>
   );

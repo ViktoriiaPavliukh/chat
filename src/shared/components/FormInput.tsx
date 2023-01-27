@@ -6,8 +6,6 @@ import InputUnstyled, { inputUnstyledClasses } from "@mui/base/InputUnstyled";
 import { styled } from "@mui/system";
 import Stack from "@mui/material/Stack";
 
-import { UploadButton, SendButton } from "./index";
-
 const blue = {
   100: "#DAECFF",
   200: "#80BFFF",
@@ -64,22 +62,19 @@ const Input = styled(InputUnstyled)(
 `
 );
 
-export function FormInput() {
+export function FormInput(props: {
+  value: string;
+  onChange: (e: any) => void;
+}) {
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
-      <FormControlUnstyled defaultValue="" required>
-        {({ filled, focused }: FormControlUnstyledState) => (
-          <React.Fragment>
-            {/* <UploadButton /> */}
-            <Input
-              placeholder="Write a message..."
-              className={filled ? "filled" : ""}
-            />
-            {filled && !focused}
-            {/* <SendButton /> */}
-          </React.Fragment>
-        )}
-      </FormControlUnstyled>
+      <React.Fragment>
+        <Input
+          placeholder="Write a message..."
+          onChange={props.onChange}
+          value={props.value}
+        />
+      </React.Fragment>
     </Stack>
   );
 }

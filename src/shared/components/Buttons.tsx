@@ -11,9 +11,7 @@ export function UploadButton() {
       color="primary"
       aria-label="upload picture"
       component="label"
-      onClick={() => {
-        console.log("clicked");
-      }}
+      onClick={() => {}}
     >
       <input hidden accept="image/*" type="file" />
       <PhotoCamera />
@@ -21,15 +19,9 @@ export function UploadButton() {
   );
 }
 
-export function SendButton() {
+export function SendButton(props: { onClick: () => void }) {
   return (
-    <Button
-      variant="contained"
-      endIcon={<SendIcon />}
-      onClick={() => {
-        console.log("clicked");
-      }}
-    >
+    <Button variant="contained" endIcon={<SendIcon />} onClick={props.onClick}>
       Send
     </Button>
   );
