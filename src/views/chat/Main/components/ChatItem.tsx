@@ -46,7 +46,7 @@ export function ChatItem({ chat }: IProps) {
           }
           secondary={
             chat.lastMessage && (
-              <LastMessageText>{chat.lastMessage?.text}</LastMessageText>
+              <LastMessageText>{chat.lastMessage.text}</LastMessageText>
             )
           }
         />
@@ -58,3 +58,35 @@ export function ChatItem({ chat }: IProps) {
 interface IProps {
   chat: ChatModel;
 }
+// export function ChatItem({ chat }: IProps) {
+//   const { roomId } = useParams();
+
+//   return (
+//     <Link href={`/${chat.id}`}>
+//       <ListItem
+//         alignItems="flex-start"
+//         style={{ background: chat.id === roomId ? "silver" : "" }}
+//       >
+//         <ListItemAvatar>
+//           <Avatar alt="Remy Sharp" src={faker.image.avatar()} />
+//         </ListItemAvatar>
+//         <ListItemText
+//           primary={
+//             <ChatTitle>
+//               {chat.title}: #{chat.id}
+//             </ChatTitle>
+//           }
+//           secondary={
+//             chat.lastMessage && (
+//               <LastMessageText>{chat.lastMessage?.text}</LastMessageText>
+//             )
+//           }
+//         />
+//       </ListItem>
+//     </Link>
+//   );
+// }
+
+// interface IProps {
+//   chat: ChatModel;
+// }

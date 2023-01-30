@@ -14,6 +14,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import Stack from "@mui/material/Stack";
+import { Link } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -158,15 +160,6 @@ export function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <Typography
             variant="h6"
             noWrap
@@ -186,6 +179,33 @@ export function Header() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Stack direction="row" spacing={2}>
+              <Link
+                href="/123"
+                color="#000"
+                paddingTop={1.5}
+                sx={{ textDecoration: "none" }}
+              >
+                {" "}
+                To Room
+              </Link>
+              <Link
+                href="/signin"
+                color="#000"
+                paddingTop={1.5}
+                sx={{ textDecoration: "none" }}
+              >
+                To SignIn
+              </Link>
+              <Link
+                href="/signup"
+                color="#000"
+                paddingTop={1.5}
+                sx={{ textDecoration: "none" }}
+              >
+                To SignUp
+              </Link>
+            </Stack>
             <IconButton
               size="large"
               aria-label="show 4 new mails"

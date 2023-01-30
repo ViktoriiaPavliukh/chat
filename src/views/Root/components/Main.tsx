@@ -3,11 +3,22 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
+import { Container } from "@mui/material";
 import { Link } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 import { ChatRoom } from "../../chat/index";
 import { ChatMain } from "../../chat/index";
+
+import { connect } from "react-redux";
+import { Outlet } from "react-router-dom";
+
+import { ChatModel } from "../../../core/models";
+
+import { selectChatsList } from "../../../core/store/chats/selectors";
+import { IState } from "../../../core/store";
+
+import { ChatList } from "../../chat/Main/components/ChatList";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -40,4 +51,15 @@ export function MainChat() {
       </Grid>
     </Box>
   );
+}
+
+const mapState = (state: IState) => ({
+  chatList: selectChatsList(state),
+});
+const mapDispatch = {};
+
+export default connect(mapState, mapDispatch)(MainChat);
+
+interface IProps {
+  chatList: ChatModel[];
 }

@@ -1,22 +1,27 @@
 import React from "react";
-import Container from "@mui/material/Container";
-import { Header } from "./components/Header";
-import { MainChat } from "../Root/components/Main";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
 import { Outlet } from "react-router-dom";
+
+import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
+import { WSConnector } from "./components/WSConnector";
+import { styled } from "@mui/material";
+
+import { Header } from "./components/Header";
+
+const Content = styled(Container)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+}));
 
 export function Root() {
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="lg" disableGutters>
-        <Box sx={{ height: "100vh" }}>
-          <Header />
-          <MainChat />
-        </Box>
+    <Container disableGutters fixed>
+      <WSConnector />
+      <Header />
+      <Content>
+        <CssBaseline />
         <Outlet />
-      </Container>
-    </React.Fragment>
+      </Content>
+    </Container>
   );
 }

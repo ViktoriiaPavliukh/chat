@@ -1,4 +1,5 @@
 import * as React from "react";
+import { IActionCreator } from "./types";
 
 export interface Action<T extends string> {
   type: T;
@@ -7,9 +8,6 @@ export interface Action<T extends string> {
 export interface ActionType<T> {
   TYPE: T;
 }
-
-export type IActionCreator<T extends string> = (() => Action<T>) &
-  ActionType<T>;
 
 export function createAction<T extends string>(type: T): IActionCreator<T> {
   const actionCreator = () => ({ type });

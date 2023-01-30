@@ -13,15 +13,23 @@ export default createMappedReducer<ChatModel>({
   initial: [
     createMockChat({
       id: "1111",
-      title: "Hillel Pro",
+      title: "Ann Gold",
     }),
     createMockChat({
       id: "2222",
-      title: "Hillel Basic",
+      title: "Hillel Pro",
     }),
     createMockChat({
       id: "3333",
-      title: "Hillel Global",
+      title: "Ukraine Group",
+    }),
+    createMockChat({
+      id: "5555",
+      title: "React Team",
+    }),
+    createMockChat({
+      id: "5989",
+      title: "English Teacher",
     }),
   ],
 });

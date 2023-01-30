@@ -35,16 +35,16 @@ export const theme = createTheme({
     },
     fontFamily: "Andika",
   },
-  // components: {
-  //   MuiLink: {
-  //     defaultProps: {
-  //       component: NavigateLink,
-  //     } as LinkProps,
-  //   },
-  //   MuiButtonBase: {
-  //     defaultProps: {
-  //       LinkComponent: NavigateLink,
-  //     },
-  //   },
-  // },
+  components: {
+    MuiLink: {
+      defaultProps: {
+        component: NavigateLink,
+      } as LinkProps,
+    },
+    MuiButtonBase: {
+      defaultProps: {
+        LinkComponent: NavigateLink,
+      },
+    },
+  },
 });
