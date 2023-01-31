@@ -8,7 +8,11 @@ import { faker } from "@faker-js/faker";
 
 import { Message } from "./components/Message";
 import { IState } from "../../../core/store";
-import { messagesSend, messagesReceive } from "../../../core/store/messages";
+import {
+  messagesSend,
+  messagesReceive,
+  messagesRemove,
+} from "../../../core/store/messages";
 import { MessageModel } from "../../../core/models";
 import { FormInput } from "../../../shared/components/FormInput";
 import {
@@ -18,7 +22,7 @@ import {
 } from "../../../shared/components";
 import { setTextRange } from "typescript";
 
-export function ChatRoom({ messages, send }: IProps) {
+export function ChatRoom({ messages, send, remove }: IProps) {
   const [text, setText] = useState("");
   const { roomId } = useParams();
 
@@ -29,7 +33,7 @@ export function ChatRoom({ messages, send }: IProps) {
     }
   };
   const onDelete = () => {
-    console.log("Deleted");
+    remove(text);
   };
 
   return (
@@ -71,7 +75,12 @@ const mapDispatch = (d: any) => ({
       }, 1000);
       setTimeout(() => {
         dispatch(messagesReceive(faker.lorem.text()));
-      }, 3000);
+      }, 2000);
+    }),
+
+  remove: (text: string) =>
+    d((dispatch: any) => {
+      dispatch(messagesRemove(text));
     }),
 });
 
@@ -80,5 +89,5 @@ export default connect(mapState, mapDispatch)(ChatRoom);
 interface IProps {
   messages: MessageModel[];
   send: (text: string) => void;
-  onDelete: (item: MessageModel) => void;
+  remove: (text: string) => void;
 }

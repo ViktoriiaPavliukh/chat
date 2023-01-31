@@ -37,6 +37,12 @@ export default function reducer(
         ],
       };
 
+    case actions.messagesRemove.TYPE:
+      return {
+        ...state,
+        list: [],
+      };
+
     default:
       return state;
   }

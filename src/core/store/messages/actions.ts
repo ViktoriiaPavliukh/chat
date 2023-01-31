@@ -1,6 +1,7 @@
 import { createPayloadAction } from "../_utils";
 
 export const messagesSend = createPayloadAction("messages.send");
+export const messagesRemove = createPayloadAction("messages.remove");
 
 export const messagesReceive = createPayloadAction("messages.receive");
 export const messagesReceiveLast = createPayloadAction("messages.receiveLast");
