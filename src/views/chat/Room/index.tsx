@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
 import { Link } from "@mui/material";
-import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -12,7 +11,12 @@ import { IState } from "../../../core/store";
 import { messagesSend, messagesReceive } from "../../../core/store/messages";
 import { MessageModel } from "../../../core/models";
 import { FormInput } from "../../../shared/components/FormInput";
-import { UploadButton, SendButton } from "../../../shared/components";
+import {
+  UploadButton,
+  SendButton,
+  DeleteButton,
+} from "../../../shared/components";
+import { setTextRange } from "typescript";
 
 export function ChatRoom({ messages, send }: IProps) {
   const [text, setText] = useState("");
@@ -23,6 +27,9 @@ export function ChatRoom({ messages, send }: IProps) {
       send(text);
       setText("");
     }
+  };
+  const onDelete = () => {
+    console.log("Deleted");
   };
 
   return (
@@ -44,6 +51,7 @@ export function ChatRoom({ messages, send }: IProps) {
         <UploadButton />
         <FormInput value={text} onChange={(e) => setText(e.target.value)} />
         <SendButton onClick={sendHandler} />
+        <DeleteButton onClick={onDelete} />
       </Stack>
     </div>
   );
@@ -72,4 +80,5 @@ export default connect(mapState, mapDispatch)(ChatRoom);
 interface IProps {
   messages: MessageModel[];
   send: (text: string) => void;
+  onDelete: (item: MessageModel) => void;
 }

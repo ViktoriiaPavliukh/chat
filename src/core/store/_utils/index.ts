@@ -5,3 +5,4 @@ export * from "./createMappedReducer";
 export * from "./createWSMiddleware";
 export * from "./createMockAPIMiddleware";
 export * from "./createPayloadActionWith";
+export * from "./createWSProcessorMiddleware";

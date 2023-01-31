@@ -26,3 +26,15 @@ export function SendButton(props: { onClick: () => void }) {
     </Button>
   );
 }
+
+export function DeleteButton(props: { onClick: () => void }) {
+  return (
+    <Button
+      variant="outlined"
+      startIcon={<DeleteIcon />}
+      onClick={props.onClick}
+    >
+      Delete
+    </Button>
+  );
+}

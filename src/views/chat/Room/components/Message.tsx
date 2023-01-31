@@ -61,7 +61,6 @@ export function Message({
       spacing={2}
       justifyContent={itsMe ? "flex-end" : "flex-start"}
       {...GridContainerProps}
-      sx={{ height: "100%" }}
     >
       {!itsMe && (
         <Grid item {...GridItemProps}>
