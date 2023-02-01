@@ -10,6 +10,8 @@ import {
   styled,
 } from "@mui/material";
 
+import { BinButton } from "../../../../shared/components";
+
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
   width: theme.spacing(4),
   height: theme.spacing(4),
@@ -54,6 +56,7 @@ export function Message({
   GridItemProps,
   AvatarProps,
   TypographyProps,
+  onClick,
 }: IProps) {
   return (
     <Grid
@@ -73,6 +76,7 @@ export function Message({
           <StyledBox key={index} itsMe={!!itsMe}>
             <StyledTypography {...TypographyProps} itsMe={!!itsMe}>
               {msg}
+              <BinButton onClick={onClick} />
             </StyledTypography>
           </StyledBox>
         ))}
@@ -89,4 +93,5 @@ interface IProps {
   GridItemProps?: GridProps;
   AvatarProps?: AvatarProps;
   TypographyProps?: TypographyProps;
+  onClick: () => void;
 }

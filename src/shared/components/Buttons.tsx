@@ -5,6 +5,14 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 
+export function BinButton(props: { onClick: () => void }) {
+  return (
+    <IconButton aria-label="delete" size="small" onClick={props.onClick}>
+      <DeleteIcon fontSize="inherit" />
+    </IconButton>
+  );
+}
+
 export function UploadButton() {
   return (
     <IconButton

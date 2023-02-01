@@ -43,6 +43,12 @@ export default function reducer(
         list: [],
       };
 
+    case actions.messageCurrentDelete.TYPE:
+      return {
+        ...state,
+        list: [...state.list],
+      };
+
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Container, Grid } from "@mui/material";
 import { connect } from "react-redux";
 import { Outlet } from "react-router-dom";
+import { Container, Grid } from "@mui/material";
 
 import { ChatModel } from "../../../core/models";
 

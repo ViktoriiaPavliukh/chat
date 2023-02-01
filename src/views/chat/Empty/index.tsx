@@ -2,7 +2,6 @@ import * as React from "react";
 import { styled, Paper, Typography } from "@mui/material";
 
 const ShadowContainer = styled(Paper)(({ theme }) => ({
-  // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "red",
   padding: theme.spacing(25),
 }));
 

@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
-import { Link } from "@mui/material";
-import Stack from "@mui/material/Stack";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { faker } from "@faker-js/faker";
+import { Link, Box } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
 import { Message } from "./components/Message";
 import { IState } from "../../../core/store";
@@ -12,6 +12,7 @@ import {
   messagesSend,
   messagesReceive,
   messagesRemove,
+  messageCurrentDelete,
 } from "../../../core/store/messages";
 import { MessageModel } from "../../../core/models";
 import { FormInput } from "../../../shared/components/FormInput";
@@ -20,9 +21,8 @@ import {
   SendButton,
   DeleteButton,
 } from "../../../shared/components";
-import { setTextRange } from "typescript";
 
-export function ChatRoom({ messages, send, remove }: IProps) {
+export function ChatRoom({ messages, send, remove, deleteCurrent }: IProps) {
   const [text, setText] = useState("");
   const { roomId } = useParams();
 
@@ -36,11 +36,15 @@ export function ChatRoom({ messages, send, remove }: IProps) {
     remove(text);
   };
 
+  const messageDelete = (text: string) => {
+    deleteCurrent(text);
+  };
+
   return (
-    <div>
-      <div>
+    <Box>
+      <Box>
         <Link href="..">Back</Link>
-      </div>
+      </Box>
       Room ID: {roomId}
       {messages.map((message, index) => (
         <Message
@@ -48,6 +52,7 @@ export function ChatRoom({ messages, send, remove }: IProps) {
           itsMe={message.fromUserId === "1111"}
           avatar=""
           messages={[message.text]}
+          onClick={() => messageDelete((message.text = "Deleted"))}
         />
       ))}
       <Stack direction="row" spacing={2}>
@@ -57,7 +62,7 @@ export function ChatRoom({ messages, send, remove }: IProps) {
         <SendButton onClick={sendHandler} />
         <DeleteButton onClick={onDelete} />
       </Stack>
-    </div>
+    </Box>
   );
 }
 
@@ -82,6 +87,11 @@ const mapDispatch = (d: any) => ({
     d((dispatch: any) => {
       dispatch(messagesRemove(text));
     }),
+
+  deleteCurrent: (text: string) =>
+    d((dispatch: any) => {
+      dispatch(messageCurrentDelete(text));
+    }),
 });
 
 export default connect(mapState, mapDispatch)(ChatRoom);
@@ -90,4 +100,5 @@ interface IProps {
   messages: MessageModel[];
   send: (text: string) => void;
   remove: (text: string) => void;
+  deleteCurrent: (text: string) => void;
 }
