@@ -53,6 +53,12 @@ export function createWSMiddleware({
       // });
     }
 
+    function emitMessage(type: string, data: any) {
+      if (socket) {
+        socket.emit(type, data);
+      }
+    }
+
     // function emitMessage(type: string, data: any) {
     //   socket?.emit(type, data);
     // }
@@ -67,10 +73,10 @@ export function createWSMiddleware({
         disconnect();
       }
 
-      // if (action.type === actions.EMIT.TYPE) {
-      //   const { wsType, wsData } = action.payload;
-      //   emitMessage(wsType, wsData);
-      // }
+      if (action.type === actions.EMIT.TYPE) {
+        const { wsType, wsData } = action.payload;
+        emitMessage(wsType, wsData);
+      }
 
       next(action);
     };
@@ -88,12 +94,6 @@ interface IWSMiddlewareParams {
   handlers: IWSHandlers;
 }
 
-// interface IWSActions {
-//   CONNECT: ((...args: any) => IAction<string>) & IActionType<string>;
-//   DISCONNECT: ((...args: any) => IAction<string>) & IActionType<string>;
-//   EMIT: ((...args: any) => IPayloadAction<string, IWSEmit>) &
-//     IActionType<string>;
-// }
 interface IWSActions {
   CONNECT: any;
   DISCONNECT: any;
@@ -106,87 +106,3 @@ interface IWSHandlers {
 
 type IWSHandler = (dispatch: Store, data: any) => void;
 type IWSActionHandler = IPayloadActionCreator<string, any>;
-// import { Middleware, Dispatch } from "redux";
-// import { io, Socket } from "socket.io-client";
-
-// export function createWSMiddleware({
-//   connectionUrl,
-//   actions,
-//   handlers,
-// }: ICreateWSMiddlewareParams): Middleware {
-//   return (store) => {
-//     let socket: Socket | null;
-
-//     function connect() {
-//       if (socket) {
-//         disconnect();
-//       }
-
-//       socket = io(connectionUrl);
-//     }
-
-//     function disconnect() {
-//       if (socket) {
-//         socket.disconnect();
-//       }
-//       socket = null;
-//     }
-
-//     function bindHandlers() {
-//       if (!socket) {
-//         return;
-//       }
-
-//       // Object.entries(handlers).map(([handlerName, handler]) => {
-//       //   socket.on(handlerName, (data) => handler(store.dispatch, data));
-//       // });
-//     }
-
-//     function sendMessage(eventType: string, eventData: any) {
-//       if (socket) {
-//         socket.send(eventType, eventData);
-//       }
-//     }
-
-//     return (next) => (action) => {
-//       if (action.type === actions.connect) {
-//         connect();
-//         bindHandlers();
-//       }
-
-//       if (action.type === actions.disconnect) {
-//         disconnect();
-//       }
-
-//       if (action.type === actions.message) {
-//         const { eventType, eventData } = action.payload;
-//         sendMessage(eventType, eventData);
-//       }
-
-//       next(action);
-//     };
-//   };
-// }
-
-// interface ICreateWSMiddlewareParams {
-//   connectionUrl: string;
-//   actions: IWSActions;
-//   handlers: IWSHandlers;
-// }
-
-// interface IWSActions {
-//   connect: string;
-//   disconnect: string;
-//   message: string;
-// }
-
-// export interface IWSEmit {
-//   type: string;
-//   data: any;
-// }
-
-// interface IWSHandlers {
-//   [wsAction: string]: IWSHandler;
-// }
-
-// type IWSHandler = (dispatch: Dispatch, data: any) => void;

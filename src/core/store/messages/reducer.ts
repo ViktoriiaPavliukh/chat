@@ -1,4 +1,4 @@
-import { AnyAction } from "redux";
+import { AnyAction, combineReducers } from "redux";
 
 import { MessageModel } from "../../models";
 
@@ -9,7 +9,7 @@ const initial: IMessagesState = {
   list: [],
 };
 
-export default function reducer(
+export default function messagesReducer(
   state: IMessagesState = initial,
   action: AnyAction
 ): IMessagesState {
@@ -46,7 +46,7 @@ export default function reducer(
     case actions.messageCurrentDelete.TYPE:
       return {
         ...state,
-        list: [...state.list],
+        list: state.list.filter((item) => item === action.payload),
       };
 
     default:

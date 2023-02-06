@@ -3,7 +3,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { faker } from "@faker-js/faker";
-import { Link, Box } from "@mui/material";
+import { Link, Container, Box } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 import { Message } from "./components/Message";
@@ -36,12 +36,12 @@ export function ChatRoom({ messages, send, remove, deleteCurrent }: IProps) {
     remove(text);
   };
 
-  const messageDelete = (text: string) => {
+  const messageDelete = () => {
     deleteCurrent(text);
   };
 
   return (
-    <Box>
+    <Container>
       <Box>
         <Link href="..">Back</Link>
       </Box>
@@ -52,7 +52,7 @@ export function ChatRoom({ messages, send, remove, deleteCurrent }: IProps) {
           itsMe={message.fromUserId === "1111"}
           avatar=""
           messages={[message.text]}
-          onClick={() => messageDelete((message.text = "Deleted"))}
+          onClick={messageDelete}
         />
       ))}
       <Stack direction="row" spacing={2}>
@@ -62,7 +62,7 @@ export function ChatRoom({ messages, send, remove, deleteCurrent }: IProps) {
         <SendButton onClick={sendHandler} />
         <DeleteButton onClick={onDelete} />
       </Stack>
-    </Box>
+    </Container>
   );
 }
 
