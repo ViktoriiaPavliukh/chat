@@ -12,7 +12,6 @@ export function BinButton(props: { onClick: () => void }) {
     </IconButton>
   );
 }
-
 export function UploadButton() {
   return (
     <IconButton

@@ -36,8 +36,8 @@ export function ChatRoom({ messages, send, remove, deleteCurrent }: IProps) {
     remove(text);
   };
 
-  const messageDelete = () => {
-    deleteCurrent(text);
+  const messageDelete = (messages: any) => {
+    deleteCurrent(messages);
   };
 
   return (
@@ -52,7 +52,7 @@ export function ChatRoom({ messages, send, remove, deleteCurrent }: IProps) {
           itsMe={message.fromUserId === "1111"}
           avatar=""
           messages={[message.text]}
-          onClick={messageDelete}
+          onDelete={messageDelete}
         />
       ))}
       <Stack direction="row" spacing={2}>
@@ -88,9 +88,9 @@ const mapDispatch = (d: any) => ({
       dispatch(messagesRemove(text));
     }),
 
-  deleteCurrent: (text: string) =>
+  deleteCurrent: (messages: string) =>
     d((dispatch: any) => {
-      dispatch(messageCurrentDelete(text));
+      dispatch(messageCurrentDelete(messages));
     }),
 });
 

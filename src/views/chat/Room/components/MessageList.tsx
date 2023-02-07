@@ -12,7 +12,7 @@ export function MessageList({ list }: any) {
           key={index}
           avatar=""
           messages={[message.text]}
-          onClick={onClick}
+          onDelete={onClick}
         />
       ))}
     </Paper>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import {
   Grid,
   GridProps,
@@ -11,6 +12,7 @@ import {
 } from "@mui/material";
 
 import { BinButton } from "../../../../shared/components";
+import { IState } from "../../../../core/store";
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
   width: theme.spacing(4),
@@ -56,7 +58,7 @@ export function Message({
   GridItemProps,
   AvatarProps,
   TypographyProps,
-  onClick,
+  onDelete,
 }: IProps) {
   return (
     <Grid
@@ -76,7 +78,7 @@ export function Message({
           <StyledBox key={index} itsMe={!!itsMe}>
             <StyledTypography {...TypographyProps} itsMe={!!itsMe}>
               {msg}
-              <BinButton onClick={onClick} />
+              <BinButton onClick={() => onDelete(msg)} />
             </StyledTypography>
           </StyledBox>
         ))}
@@ -93,5 +95,5 @@ interface IProps {
   GridItemProps?: GridProps;
   AvatarProps?: AvatarProps;
   TypographyProps?: TypographyProps;
-  onClick: () => void;
+  onDelete: (msg: string) => void;
 }

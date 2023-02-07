@@ -46,7 +46,7 @@ export default function messagesReducer(
     case actions.messageCurrentDelete.TYPE:
       return {
         ...state,
-        list: state.list.filter((item) => item === action.payload),
+        list: state.list.filter((message) => message.text !== action.payload),
       };
 
     default:
