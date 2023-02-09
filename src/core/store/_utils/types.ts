@@ -1,3 +1,5 @@
+import { MessageModel } from "../../../core/models";
+
 // Actions
 export interface IActionType<T> {
   TYPE: T;
@@ -38,3 +40,32 @@ export type IPayloadActionWithCreator<
 
 // Other
 export type IAnyFn = (...args: any) => any;
+
+// WebSocket
+
+export enum WebSocketEvents {
+  ToServerMessage = "ToServerMessage",
+  ToClientMessage = "ToClientMessage",
+  RequestLastMessages = "RequestLastMessages",
+  ResponseLastMessages = "ResponseLastMessages",
+}
+
+export interface IWebSocketClientMessage {
+  chatId: string;
+  text: string;
+}
+
+export interface IWebSocketServerMessage {
+  chatId: string;
+  message: MessageModel;
+}
+
+export interface IWebSocketRequestLastMessages {
+  chatId: string;
+  quantity?: number;
+}
+
+export interface IWebSocketResponseLastMessages {
+  chatId: string;
+  messages: MessageModel[];
+}

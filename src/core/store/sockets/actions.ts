@@ -1,14 +1,51 @@
-import { createAction, createPayloadActionWith, IWSEmit } from "../_utils";
+import {
+  createAction,
+  createPayloadAction,
+  createPayloadActionWith,
+  createBindAction,
+  IWSMessage,
+} from "../_utils";
+import { WebSocketEvents, IWebSocketServerMessage } from "../_utils/types";
 
 // Connection actions
-export const socketsConnect = createAction("ws.connect");
+export const socketsConnect = createPayloadAction("ws.connect");
 export const socketsDisconnect = createAction("ws.disconnect");
 
-// Emit actions
-export const socketsEmit = createPayloadActionWith(
-  "ws.emit",
-  (type: string, data: any): IWSEmit => ({ type, data })
+// Actions
+const wsMessageCreator = (type: string, data: any): IWSMessage => ({
+  type,
+  data,
+});
+
+export const socketsEmit = createPayloadActionWith("ws.emit", wsMessageCreator);
+export const socketsReceive = createPayloadActionWith(
+  "ws.receive",
+  wsMessageCreator
 );
+
+// Request Entity
+// export const socketsRequestEntity = createPayloadActionWith();
+
+export const messagesSend = createBindAction(
+  socketsEmit,
+  WebSocketEvents.ToServerMessage
+);
+
+export const messagesReceive =
+  createPayloadAction<IWebSocketServerMessage>("messages.receive");
+export const messagesReceiveLast = createPayloadAction("messages.receiveLast");
+
+export const messagesGetLastMessages = createPayloadAction("");
+
+export const messagesSetCurrentChat = createPayloadAction<string>(
+  "messages.selectChat"
+);
+
+// Emit actions
+// export const socketsEmit = createPayloadActionWith(
+//   "ws.emit",
+//   (type: string, data: any): IWSEmit => ({ type, data })
+// );
 
 // //WebSocket connection
 // export const messagesWSConnect = createAction("messages.ws.connect");

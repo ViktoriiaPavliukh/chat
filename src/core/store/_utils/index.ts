@@ -1,4 +1,5 @@
 export * from "./createAction";
+export * from "./createBindAction";
 export * from "./createPayloadAction";
 export * from "./createErrorAction";
 export * from "./createMappedReducer";

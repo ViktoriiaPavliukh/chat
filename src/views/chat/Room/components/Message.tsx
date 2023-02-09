@@ -95,5 +95,6 @@ interface IProps {
   GridItemProps?: GridProps;
   AvatarProps?: AvatarProps;
   TypographyProps?: TypographyProps;
+  // onClick: () => void;
   onDelete: (msg: string) => void;
 }

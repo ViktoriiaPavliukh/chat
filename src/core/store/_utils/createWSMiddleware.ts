@@ -6,13 +6,11 @@ import {
   IActionType,
   IPayloadActionCreator,
   IPayloadAction,
-} from "./types";
+} from "../../store/_utils/typesWS";
 
 function isActionCreator(handler: IWSHandler): handler is IWSActionHandler {
   return typeof handler === "function" && "TYPE" in handler;
 }
-
-const socket = io();
 
 export function createWSMiddleware({
   connectionUrl,
@@ -22,12 +20,16 @@ export function createWSMiddleware({
   return (store) => {
     let socket: Socket | null;
 
-    function connect() {
+    function connect(token: string) {
       if (socket) {
         disconnect();
       }
 
-      socket = io(connectionUrl);
+      socket = io(connectionUrl, {
+        extraHeaders: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
     }
 
     function disconnect() {
@@ -43,7 +45,7 @@ export function createWSMiddleware({
       }
 
       // Object.entries(handlers).map(([handlerName, handler]) => {
-      //   socket.on(handlerName, (data) => {
+      //   socket?.on(handlerName, (data) => {
       //     if (isActionCreator(handler)) {
       //       store.dispatch(handler(data));
       //     } else {
@@ -59,13 +61,9 @@ export function createWSMiddleware({
       }
     }
 
-    // function emitMessage(type: string, data: any) {
-    //   socket?.emit(type, data);
-    // }
-
     return (next) => (action) => {
       if (action.type === actions.CONNECT.TYPE) {
-        connect();
+        connect(action.payload);
         bindHandlers();
       }
 
@@ -74,8 +72,8 @@ export function createWSMiddleware({
       }
 
       if (action.type === actions.EMIT.TYPE) {
-        const { wsType, wsData } = action.payload;
-        emitMessage(wsType, wsData);
+        const { type, data } = action.payload;
+        emitMessage(type, data);
       }
 
       next(action);
@@ -83,7 +81,7 @@ export function createWSMiddleware({
   };
 }
 
-export interface IWSEmit {
+export interface IWSMessage {
   type: string;
   data: any;
 }
@@ -95,9 +93,10 @@ interface IWSMiddlewareParams {
 }
 
 interface IWSActions {
-  CONNECT: any;
-  DISCONNECT: any;
-  EMIT: any;
+  CONNECT: IWSConnectionAction;
+  DISCONNECT: IWSConnectionAction;
+  EMIT: IWSMessageAction;
+  RECEIVE: IWSMessageAction;
 }
 
 interface IWSHandlers {
@@ -105,4 +104,8 @@ interface IWSHandlers {
 }
 
 type IWSHandler = (dispatch: Store, data: any) => void;
-type IWSActionHandler = IPayloadActionCreator<string, any>;
+type IWSActionHandler = IPayloadActionCreator<any>;
+
+type IWSConnectionAction = ((...args: any) => IAction) & IActionType;
+type IWSMessageAction = ((...args: any) => IPayloadAction<IWSMessage>) &
+  IActionType;
