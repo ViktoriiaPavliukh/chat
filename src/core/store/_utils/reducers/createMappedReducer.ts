@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-import { BaseModel } from "../../models/_BaseModel";
+import { BaseModel } from "../../../models/_BaseModel";
 
-import { IPayloadAction } from "./types";
+import { IPayloadAction } from "../types";
 
 export function createMappedReducer<Entity extends BaseModel>({
   actions: { ADD, REMOVE },
@@ -37,6 +37,9 @@ export function createMappedReducer<Entity extends BaseModel>({
   ) {
     switch (action.type) {
       case ADD:
+        return [...state, action.payload.id];
+
+      case REMOVE:
         return [...state, action.payload.id];
 
       default:

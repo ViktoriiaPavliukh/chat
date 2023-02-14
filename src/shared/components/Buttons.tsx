@@ -40,6 +40,7 @@ export function DeleteButton(props: { onClick: () => void }) {
       variant="outlined"
       startIcon={<DeleteIcon />}
       onClick={props.onClick}
+      sx={{ mx: 1 }}
     >
       Delete
     </Button>

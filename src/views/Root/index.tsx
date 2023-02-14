@@ -11,6 +11,9 @@ import { Header } from "./components/Header";
 const Content = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(2),
   marginBottom: theme.spacing(2),
+  flex: "1 1 auto",
+  display: "flex",
+  flexDirection: "column",
 }));
 
 export function Root() {
@@ -25,3 +28,32 @@ export function Root() {
     </Container>
   );
 }
+// const RootContainer = styled(Container)({
+//   display: "flex",
+//   flexDirection: "column",
+//   minHeight: "100vh",
+//   maxHeight: "100vh",
+// });
+
+// const Content = styled(Container)(({ theme }) => ({
+//   flex: "1 1 auto",
+//   display: "flex",
+//   flexDirection: "column",
+//   marginTop: theme.spacing(2),
+//   marginBottom: theme.spacing(2),
+// }));
+
+// export function Root() {
+//   return (
+//     <RootContainer disableGutters maxWidth={false}>
+//       <WSConnector />
+//       <Header />
+
+//       <Content disableGutters>
+//         <CssBaseline />
+
+//         <Outlet />
+//       </Content>
+//     </RootContainer>
+//   );
+// }

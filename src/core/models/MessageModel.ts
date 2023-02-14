@@ -4,5 +4,4 @@ export interface MessageModel extends BaseModel {
   fromUserId: string;
   created: number;
   text: string;
-  item: number;
 }

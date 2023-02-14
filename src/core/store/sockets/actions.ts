@@ -6,9 +6,11 @@ import {
   IWSMessage,
 } from "../_utils";
 import { WebSocketEvents, IWebSocketServerMessage } from "../_utils/types";
+import { IPayloadActionCreator } from "../_utils/typesWS";
 
 // Connection actions
-export const socketsConnect = createPayloadAction("ws.connect");
+// export const socketsConnect = createPayloadAction("ws.connect");  error WSConnector
+export const socketsConnect = createAction("ws.connect");
 export const socketsDisconnect = createAction("ws.disconnect");
 
 // Actions
@@ -26,20 +28,36 @@ export const socketsReceive = createPayloadActionWith(
 // Request Entity
 // export const socketsRequestEntity = createPayloadActionWith();
 
-export const messagesSend = createBindAction(
+export const messagesWSSend = createBindAction(
   socketsEmit,
+  WebSocketEvents.ToClientMessage
+);
+
+export const messagesWSReceived = createBindAction(
+  socketsReceive,
   WebSocketEvents.ToServerMessage
 );
 
 export const messagesReceive =
-  createPayloadAction<IWebSocketServerMessage>("messages.receive");
+  createPayloadWSAction<IWebSocketServerMessage>("messages.receive");
+// export const messagesReceive = createPayloadAction("messages.receive");
 export const messagesReceiveLast = createPayloadAction("messages.receiveLast");
 
 export const messagesGetLastMessages = createPayloadAction("");
 
-export const messagesSetCurrentChat = createPayloadAction<string>(
-  "messages.selectChat"
-);
+// export const messagesSetCurrentChat = createPayloadAction<string>(
+//   "messages.selectChat"
+// );
+
+export function createPayloadWSAction<P, T extends string = string>(
+  type: T
+): IPayloadActionCreator<P, T> {
+  const actionCreator = (payload: P) => ({ type, payload });
+  actionCreator.TYPE = type;
+  actionCreator.toString = () => type;
+
+  return actionCreator;
+}
 
 // Emit actions
 // export const socketsEmit = createPayloadActionWith(
