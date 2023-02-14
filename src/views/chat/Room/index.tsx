@@ -3,7 +3,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { faker } from "@faker-js/faker";
-import { Link, Box, styled, Checkbox } from "@mui/material";
+import { Link, Box, styled } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 import { Message } from "./components/Message";
@@ -36,7 +36,7 @@ const FormWrapper = styled(Box)(({ theme }) => ({
   right: "0",
 }));
 
-export function ChatRoom({ messages, send, remove, deleteCurrent }: IProps) {
+export function ChatRoom({ messages, send, removeAll, removeMessage }: IProps) {
   const [text, setText] = useState("");
   const { roomId } = useParams();
 
@@ -47,11 +47,7 @@ export function ChatRoom({ messages, send, remove, deleteCurrent }: IProps) {
     }
   };
   const onDelete = () => {
-    remove(text);
-  };
-
-  const messageDelete = (text: string) => {
-    deleteCurrent(text);
+    removeAll(text);
   };
 
   return (
@@ -66,8 +62,7 @@ export function ChatRoom({ messages, send, remove, deleteCurrent }: IProps) {
           itsMe={message.fromUserId === "1111"}
           avatar=""
           messages={[message.text]}
-          onDelete={messageDelete}
-          // onDelete={() => console.log(message.id)}
+          onDelete={() => removeMessage(message)}
         />
       ))}
       <Stack direction="row" spacing={2}>
@@ -100,14 +95,14 @@ const mapDispatch = (d: any) => ({
       }, 2000);
     }),
 
-  remove: (text: string) =>
+  removeAll: (text: string) =>
     d((dispatch: any) => {
       dispatch(messagesRemove(text));
     }),
 
-  deleteCurrent: (text: string) =>
+  removeMessage: (message: MessageModel) =>
     d((dispatch: any) => {
-      dispatch(messageCurrentDelete(text));
+      dispatch(messageCurrentDelete(message));
     }),
 });
 
@@ -116,6 +111,6 @@ export default connect(mapState, mapDispatch)(ChatRoom);
 interface IProps {
   messages: MessageModel[];
   send: (text: string) => void;
-  remove: (text: string) => void;
-  deleteCurrent: (text: string) => void;
+  removeAll: (text: string) => void;
+  removeMessage: (message: MessageModel) => void;
 }

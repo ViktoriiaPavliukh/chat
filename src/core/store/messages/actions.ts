@@ -1,3 +1,4 @@
+import { MessageModel } from "../../models";
 import {
   createAction,
   createPayloadAction,
@@ -6,7 +7,10 @@ import {
 
 export const messagesSend = createPayloadAction("messages.send");
 export const messagesRemove = createPayloadAction("messages.remove");
-export const messageCurrentDelete = createPayloadAction("message.delete");
+export const messageCurrentDelete = createPayloadAction<
+  "message.delete",
+  MessageModel
+>("message.delete");
 
 export const messagesReceive = createPayloadAction("messages.receive");
 export const messagesReceiveLast = createPayloadAction("messages.receiveLast");

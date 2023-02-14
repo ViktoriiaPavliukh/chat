@@ -18,13 +18,13 @@ export function createListReducer<
     action: IPayloadAction<Entity>
   ): ResultEntity[] {
     switch (action.type) {
-      //   case ADD:
-      //     return [...state, pickFromEntity(action.payload)];
+      case ADD:
+        return [...state, pickFromEntity(action.payload)];
 
-      //   case REMOVE: {
-      //     const matchTo = pickFromEntity(action.payload);
-      //     return state.filter((entity: ResultEntity) => entity !== matchTo);
-      //   }
+      case REMOVE: {
+        const matchTo = pickFromEntity(action.payload);
+        return state.filter((entity: ResultEntity) => entity !== matchTo);
+      }
 
       default:
         return state;
